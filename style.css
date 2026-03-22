@@ -1,0 +1,145 @@
+@font-face {
+  font-family: 'uzura';
+  src: url('./fonts/uzura.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 基本スタイル */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'uzura', monospace;
+  background: url('./images/sakura_m.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  min-height: 100vh;
+  gap: 2rem;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* ゲームタイトル */
+.game-title {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: bold;
+  font-family: 'uzura', monospace;
+  color: black;
+  margin: 0 0 0 0;
+  text-align: center;
+  transform: translateY(-3vh);
+  padding: 0 1rem;
+}
+
+/* サブタイトル */
+.subtitle {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: bold;
+  font-family: 'uzura', monospace;
+  color: black;
+  margin: 0;
+  text-align: center;
+  transform: translateY(-1vh);
+  padding: 0 1rem;
+}
+
+/* スタートボタン */
+.start-btn {
+  background: linear-gradient(to bottom, #4ade80 0%, #22c55e 100%);
+  color: white;
+  border: none;
+  padding: clamp(1.2rem, 3.5vw, 1.8rem) clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+  font-weight: bold;
+  font-family: 'uzura', monospace;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  transform: translateY(7vh);
+  position: relative;
+  overflow: hidden;
+  min-height: 55px;
+  min-width: 140px;
+}
+
+.start-btn.loading {
+  background: linear-gradient(to right, #ff8c00 0%, #808080 0%);
+  color: white;
+  cursor: not-allowed;
+}
+
+.start-btn.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #ff8c00, #ff8c00);
+  animation: fillOrange 15s ease-in-out forwards;
+  z-index: 1;
+}
+
+.start-btn.loading span {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fillOrange {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) and (orientation: portrait) {
+  body {
+    gap: 1.5rem;
+  }
+  
+  .game-title {
+    font-size: clamp(3.5rem, 12vw, 5rem);
+    transform: translateY(-4vh);
+  }
+  
+  .subtitle {
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem);
+    transform: translateY(-1vh);
+  }
+  
+  .start-btn {
+    padding: clamp(1rem, 3vw, 1.4rem) clamp(1.8rem, 4.5vw, 2.8rem);
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    transform: translateY(6vh);
+    min-height: 50px;
+  }
+}
+
+/* 小さいスマホ対応 */
+@media (max-width: 375px) and (orientation: portrait) {
+  .game-title {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+  
+  .subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+  }
+  
+  .start-btn {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    padding: clamp(0.7rem, 2vw, 1rem) clamp(1.2rem, 3.5vw, 2rem);
+  }
+}
+
